@@ -1,0 +1,54 @@
+.sign_in_container {
+    width: 96%;
+    height: 100vh;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    background-color:white;
+ 
+}
+.sign_in_container img{
+    padding-bottom: 40px;
+}
+.user_input {
+    width: 50%;
+}
+.user_input label {
+    margin-right: 70%;
+    font-size: 120%;
+    margin-bottom: 25px;
+}
+.sign_in_buttons  {
+    height: 10px;
+}
+.login_button {
+    border: none;
+    width: 130px;
+    height: 40px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 30px;
+    background-color: #8aea92;
+    font-weight: bolder;
+}
+.register_button {
+    border: none;
+    width: 130px;
+    height: 40px;
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+    margin-right: 30px;
+    background-color: rgb(2, 48, 2);
+    font-weight: bolder;
+}
+
+
+.user_input input {
+    width: 100%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    border: 1px solid #519872;
+}
