@@ -4,11 +4,40 @@ import "./SignIn.css";
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import {updateLogin, updateRegister, handleLogin, handleRegister} from '../../ducks/reducer';
+import {updateUsername, updatePassword} from '../../ducks/reducer';
+import axios from 'axios';
 
 class SignIn extends Component {
+constructor(){
+    super()
+    this.state=({
+        username: '',
+        password: ''
+    })
+}
+
+updateUsername(){
+this.setState = {
+}
+}
+
+updatePassword(){
+
+}
+// handleLogin (){
+
+// }
+
+handleRegister(){
+    axios
+    .put('/api/register', this.state.username, this.state.password)
+    .then(alert('Good job!'))
+    .catch(console.log())
+}
+//****history.push and redirect from Router
+
   render() {
-      const { updateLogin, updateRegister, handleLogin, handleRegister} = this.props;
+      const { updateUsername, updatePassword} = this.props;
     return (
       <div className="sign_in_container">
         <img src={logo} alt="logo" />
@@ -19,8 +48,8 @@ class SignIn extends Component {
           <input type="text" id="pword" className="password" onChange={e => updatePassword(e.target.value)}/>
 
           <div className="sign_in_buttons" />
-          <button className="login_button" onClick={() => handleLogin(e.target.value)}>Login</button>
-          <button className="register_button" onClick={() => handleRegister(e.target.value)}>Register</button>
+          <button className="login_button" onClick={this.handleLogin()}>Login</button>
+          <button className="register_button" onClick={this.handleRegister()}>Register</button>
         </div>
       </div>
     );
@@ -31,13 +60,10 @@ let mapStateToProps = state => {
   
     return {
       username, 
-      password
+      password,
     };
   }
   
-  export default connect( mapStateToProps, { updateLogin, updateRegister, handleLogin, handleRegister } )( SignIn );
+  export default connect( mapStateToProps, { updateUsername, updatePassword} )( SignIn );
 
-//<span>Username</span>
-//<input placeholder="enter username" type="text" />
-//<span>Password</span>
-//<input placeholder="user_password" type="text" />
+

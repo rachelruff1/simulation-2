@@ -4,6 +4,7 @@ const {json} = require('body-parser');
 const cors = require('cors');
 const session = require('express-session');
 const massive = require('massive')
+const AuthCtrl = require('./auth_controller');
 
 const app = express();
 app.use(json());
@@ -22,6 +23,10 @@ massive(process.env.CONNECTION_STRING)
     app.set("db", db);
   })
   .catch(console.log());
+
+app.get('/api/users', AuthCtrl.getAll);
+app.get('/api/user/:id', AuthCtrl.getUser)
+app.post('/api/register', AuthCtrl.register);
 
 const port = process.env.PORT || 3001;
 app.listen(port, ()=>console.log(`App listening on port ${port}!`));

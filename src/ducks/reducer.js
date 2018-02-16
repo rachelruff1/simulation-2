@@ -1,24 +1,36 @@
 const initialState = {
-updateAllCaps: ''
+  username: "",
+  password: ""
+};
+
+
+const UPDATE_USERNAME = "UPDATE_USERNAME";
+const UPDATE_PASSWORD = "UPDATE_PASSWORD";
+
+
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case UPDATE_USERNAME:
+      return Object.assign({}, state, { username: action.payload });
+    case UPDATE_PASSWORD:
+      return Object.assign({}, state, { password: action.payload });
+    default:
+      return state;
+  }
 }
 
-const UPDATE_ALL_CAPS = 'UPDATE_ALL_CAPS'
 
-function reducer( state = initialState, action) {
-    switch(action.type){
-        case UPDATE_ALL_CAPS:
-            return Object.assign({}, state, {allCaps : action.payload});
-    default: 
-        return state;
-    }
-}
-
-export const updateAllCaps = allCaps =>
-{
-    return {
-        type: UPDATE_ALL_CAPS,
-        payload: allCaps
-    };
-}
+export const updateUsername = username => {
+  return {
+    type: UPDATE_USERNAME,
+    payload: username
+  };
+};
+export const updatePassword = password => {
+  return {
+    type: UPDATE_PASSWORD,
+    payload: password
+  };
+};
 
 export default reducer;
